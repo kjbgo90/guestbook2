@@ -21,16 +21,7 @@ public class GuestBookServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String actionName = request.getParameter("action");
 		
-		if("addList".equals(actionName)) {
-			System.out.println("addList 호출!");
-			
-			GuestBookDao dao = GuestBookDao.getInstance();
-			List<GuestBookVo> list = dao.getList();
-			
-			request.setAttribute("guestList", list);
-			
-			WebUtil.forword(request, response, "/WEB-INF/addList.jsp");
-		} else if("insert".equals(actionName)) {
+		if("insert".equals(actionName)) {
 			System.out.println("insert 실행!");
 			
 			String name = request.getParameter("name");
@@ -60,6 +51,15 @@ public class GuestBookServlet extends HttpServlet {
 			dao.delete(vo);
 			
 			WebUtil.redirect(request, response, "/guestbook2/gb?action=addList");
+		} else {
+			System.out.println("addList 호출!");
+			
+			GuestBookDao dao = GuestBookDao.getInstance();
+			List<GuestBookVo> list = dao.getList();
+			
+			request.setAttribute("guestList", list);
+			
+			WebUtil.forword(request, response, "/WEB-INF/addList.jsp");
 		}
 	}
 
