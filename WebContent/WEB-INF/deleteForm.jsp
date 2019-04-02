@@ -12,13 +12,13 @@
 </head>
 <body>
 <form method="post" action="./gb">
-	<input type="hidden" name="action" value="delete">
-	<p>비밀번호
+	<div>비밀번호
+		<input type="hidden" name="action" value="delete">
 		<input type="password" name="pwd" value="">
 		<input type="hidden" name="no" value="<%= no%>">
 		<input type="submit" value="확인">
 		<a href="./gb?action=addList">메인으로 돌아가기</a>
-	</p>
+	</div>
 </form>
 </body>
 </html>
